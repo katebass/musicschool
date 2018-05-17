@@ -1,13 +1,16 @@
 <?php
 
 use Faker\Generator as Faker;
+Faker\Provider\DateTime;
 
 $factory->define(App\Solution::class, function (Faker $faker) {
     return [
-        'student_id' => factory(App\Teacher::class)->create()->id,
-        'assignment_id' => factory(App\Teacher::class)->create()->id,
-        'description' => $faker->text(),
-        'audiofile' => $faker->"https://pbs.twimg.com/profile_images/921903322357002240/APAps6kX.jpg",
-        'mark' => Null;
+        //'student_id' => factory(App\Teacher::class)->create()->id,
+        'student_id' => factory(App\Student::class)->create()->id,
+        'assignment_id' => factory(App\Assignment::class)->create()->id,
+        'description' => $faker->text(191),
+        'audiofile' => "https://pbs.twimg.com/profile_images/921903322357002240/APAps6kX.jpg",
+        'mark' => Null,
+        'handover_date' => dateTime($max = 'now', $timezone = null)
     ];
 });

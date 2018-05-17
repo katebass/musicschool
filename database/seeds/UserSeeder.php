@@ -14,15 +14,16 @@ class UserSeeder extends Seeder
         factory(App\User::class, 2)->create()
             ->each(function ($u) {
                 for($i = 0; $i<3; $i++) {
-                    $u->students()->save(factory(App\Student::class)->make());
+                    $u->teachers()->save(factory(App\Teacher::class)->create());
                 }
             });
 
-        factory(App\User::class, 2)->create()
+        factory(App\User::class, 5)->create()
             ->each(function ($u) {
                 for($i = 0; $i<3; $i++) {
-                    $u->teachers()->save(factory(App\Teacher::class)->make());
+                    $u->students()->save(factory(App\Student::class)->create());
                 }
             });
+
     }
 }
