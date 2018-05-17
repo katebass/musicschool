@@ -11,6 +11,6 @@ $factory->define(App\Solution::class, function (Faker $faker) {
         'description' => $faker->text(191),
         'audiofile' => "https://pbs.twimg.com/profile_images/921903322357002240/APAps6kX.jpg",
         'mark' => Null,
-        'handover_date' => dateTime($max = 'now', $timezone = null)
+        'handover_date' => $faker->dateTime($max = 'now', $timezone = null)
     ];
 });
