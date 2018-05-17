@@ -11,19 +11,8 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 2)->create()
-            ->each(function ($u) {
-                for($i = 0; $i<3; $i++) {
-                    $u->teachers()->save(factory(App\Teacher::class)->create());
-                }
-            });
+        factory(App\Teacher::class, 5)->create();
 
-        factory(App\User::class, 5)->create()
-            ->each(function ($u) {
-                for($i = 0; $i<3; $i++) {
-                    $u->students()->save(factory(App\Student::class)->create());
-                }
-            });
-
+        factory(App\Student::class, 5)->create();
     }
 }

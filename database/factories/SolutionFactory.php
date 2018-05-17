@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
-Faker\Provider\DateTime;
+use Faker\Provider\DateTime;
 
 $factory->define(App\Solution::class, function (Faker $faker) {
     return [
