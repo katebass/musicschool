@@ -1,0 +1,15 @@
+.header{
+	background-image: url(https://i.pinimg.com/originals/9f/a0/57/9fa05709be2bd6b96da9d00bfa39e26f.png);
+	background-size: cover;
+	position: relative;
+	height: 60vh;
+	color: white;
+}
+
+.blure{
+position:absolute;
+z-index:-1;
+background-color:rgba(0,0,0,0.3);
+height:100%;
+top:0;width:100%;
+}

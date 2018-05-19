@@ -1,6 +1,6 @@
 <div class="navigation">
   <div class="container">
-    <nav class="nav blog-nav">
+    <nav class="nav ">
       <a class="nav-link active" href="{{ route('home') }}">Home</a>
       <a class="nav-link" href="#">My Groups</a>
       <a class="nav-link" href="#">Tasks</a>
