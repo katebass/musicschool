@@ -5,7 +5,6 @@ use Faker\Provider\DateTime;
 
 $factory->define(App\Solution::class, function (Faker $faker) {
     return [
-        //'student_id' => factory(App\Teacher::class)->create()->id,
         'student_id' => factory(App\Student::class)->create()->id,
         'assignment_id' => factory(App\Assignment::class)->create()->id,
         'description' => $faker->text(191),
