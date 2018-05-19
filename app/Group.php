@@ -20,4 +20,6 @@ class Group extends Model
     {
         return $this->hasMany(Assignment::class);
     }
+
+
 }

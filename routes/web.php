@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/','GroupsController@index')->name('home');
+
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
 
  Route::view('signup', 'auth.registration')->name('signup');
  Route::post('register', 'AuthenticationController@register')->name('register');

@@ -26,7 +26,6 @@ h6, .h6 {
 
 .navigation{
   background-color: #f9f9f9;
-  margin-bottom: 20px;
 }
 
 .nav-link {
@@ -61,9 +60,7 @@ h6, .h6 {
 
 
 .blog-footer {
-  position: absolute;
   width: 100%;
-  bottom: 0;
   padding: 2.5rem 0;
   color: #999;
   text-align: center;
