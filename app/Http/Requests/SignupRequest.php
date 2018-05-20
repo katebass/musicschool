@@ -25,7 +25,10 @@ class SignupRequest extends FormRequest
     {
         return [
             'email'=> 'required|email|unique:users|max:191',
-            'password' => 'required|min:6|max:191|confirmed'
+            'password' => 'required|min:6|max:191|confirmed',
+            'name' => 'required|min:3',
+            'experience' => 'required_without:grade',
+            'grade' => 'required_without:experience'
         ];
     }
 }

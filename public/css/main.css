@@ -64,7 +64,45 @@ input[type=radio] {
     height: 20px;
 }
 
-.blog-footer {
+form{
+  margin-top: 20px;
+}
+
+.display-no{
+  display: none;
+}
+
+.shown{
+  display: block;
+}
+
+.header{
+  background-image: url(https://i.pinimg.com/originals/9f/a0/57/9fa05709be2bd6b96da9d00bfa39e26f.png);
+  background-size: cover;
+  position: relative;
+  height: 60vh;
+  color: white;
+}
+
+.blure{
+  position: absolute;
+  z-index: -1;
+  background-color: rgba(0,0,0,0.3);
+  height: 100%;
+  top: 0;
+  width: 100%;
+}
+
+.blure-white{
+  position: absolute;
+  z-index: -1;
+  background-color: rgba(255,255,255, .3);
+  height: 100%;
+  top: 0;
+  width: 100%;
+}
+
+footer {
   width: 100%;
   padding: 2.5rem 0;
   color: #999;
@@ -72,6 +110,7 @@ input[type=radio] {
   background-color: #f9f9f9;
   border-top: .05rem solid #e5e5e5;
 }
-.blog-footer p:last-child {
+
+footer p:last-child {
   margin-bottom: 0;
 } 

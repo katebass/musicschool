@@ -12,6 +12,8 @@
 */
 
 Route::get('/','GroupsController@index')->name('home');
+Route::get('/groups/{id}', 'GroupsController@show')->name('group');
+Route::get('/groups', 'GroupsController@search')->name('search');
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -24,3 +26,6 @@ Route::get('/','GroupsController@index')->name('home');
  Route::post('/login', 'AuthenticationController@login')->name('login-post');
 
  Route::get('/logout', 'AuthenticationController@destroy')->name('logout');
+
+
+ Route::get('mygroups', 'GroupsController@myGroups')->name('myGroups');
