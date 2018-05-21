@@ -17,7 +17,7 @@ class CreateGroupsTable extends Migration
             $table->increments('id');
             $table->integer('teacher_id')->unsigned()->index();
             $table->string('discipline');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
 
             $table->foreign('teacher_id')

@@ -16,3 +16,12 @@
 	text-align: center;
 	margin-top: 20px;
 }
+
+.button-join{
+	background-color: lightblue;
+	color:white;
+}
+
+.button-join a:hover{
+	color: white;
+}

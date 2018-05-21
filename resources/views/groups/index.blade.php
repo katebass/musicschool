@@ -9,7 +9,6 @@
 @endsection
 
 @section('content')
-
   <div class="header">
     <div class="blure"></div>
       <div class="container">

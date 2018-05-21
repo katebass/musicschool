@@ -15,11 +15,16 @@
 <div class="group-list">
 
 <div class="container">
-  @forelse($groups as $group)
-    @include('groups.group')
-  @empty
-  no Groups
-  @endforelse
+
+	@if($user->isTeacher())
+			<a href="{{ route('creategroup') }}">Create group</a>
+	@endif
+
+	@forelse($groups as $group)
+		@include('groups.group')
+	@empty
+		no Groups
+	@endforelse
 </div>
 
 </div>

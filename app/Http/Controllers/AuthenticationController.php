@@ -18,14 +18,6 @@ class AuthenticationController extends Controller
   }
 
 	public function register(SignupRequest $request){
-	// $user = User::create([
-	// 	'name' => $request->name,
-	// 	'email' => $request->email,
-	// 	'address' => $request->address,
-	// 	'phone' => $request->phone,
-	// 	'password' => Hash::make($request->password),
-	// ]);
-
 	$user = $this->model->create($request->only(['name', 'email', 'address', 'phone', 'password']));
 	$this->model->setModel($user);
 

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Group;
 use App\Teacher;
+use App\Student;
 use Auth;
 use Illuminate\Http\Request;
 use App\Repositories\GroupRepository;
+use App\Http\Requests\GroupRequest;
 
 class GroupsController extends Controller
 {
@@ -24,13 +26,19 @@ class GroupsController extends Controller
 
     public function myGroups(){
         $teacher = Teacher::where('user_id', Auth::user()->id)->first();
-        
+
+
         if($teacher){
+            $role = "teacher";
             $groups = Group::orderBy('created_at', 'desc')
             ->where('teacher_id', $teacher->id)
             ->get();
+            
         } else{
-            dd("Student");
+            $role = "student";
+            $student = Student::where('user_id', Auth::user()->id)->first();
+
+            $groups = $student->groups;
         }
 
         return view('groups.mygroups', compact('groups'));
@@ -58,5 +66,23 @@ class GroupsController extends Controller
             ->get();
 
         return view('groups.index', compact('groups', 'q'));
+    }
+
+    public function create(GroupRequest $request){
+        $this->group->create($request->only(['discipline', 'description', 'teaher_id']));
+
+        return redirect()->route('mygroups');
+    }
+
+    public function join($id){
+        $group = $this->group->show($id);
+
+        Auth::user()->student->groups()->save($group);
+        return redirect()->home();
+    }
+
+    public function leave($id){
+        Auth::user()->student->groups()->detach($id);
+        return redirect()->home();
     }
 }

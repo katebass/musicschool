@@ -12,6 +12,15 @@
 */
 
 Route::get('/','GroupsController@index')->name('home');
+
+Route::get('mygroups', 'GroupsController@myGroups')->name('mygroups');
+
+Route::view('groups/new', 'groups.new')->name('creategroup');
+Route::post('groups/create', 'GroupsController@create')->name("storegroup");
+
+Route::get('/groups/join/{id}', 'GroupsController@join')->name('joingroup');
+Route::get('/groups/leave/{id}', 'GroupsController@leave')->name('leavegroup');
+
 Route::get('/groups/{id}', 'GroupsController@show')->name('group');
 Route::get('/groups', 'GroupsController@search')->name('search');
 
@@ -26,6 +35,3 @@ Route::get('/groups', 'GroupsController@search')->name('search');
  Route::post('/login', 'AuthenticationController@login')->name('login-post');
 
  Route::get('/logout', 'AuthenticationController@destroy')->name('logout');
-
-
- Route::get('mygroups', 'GroupsController@myGroups')->name('myGroups');

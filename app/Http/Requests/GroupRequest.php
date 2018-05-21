@@ -5,8 +5,9 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Auth;
 
-class SignupRequest extends FormRequest
+class GroupRequest extends FormRequest
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -14,7 +15,7 @@ class SignupRequest extends FormRequest
      */
     public function authorize()
     {
-        return !Auth::check();
+        return Auth::check();
     }
 
     /**
@@ -25,11 +26,7 @@ class SignupRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'=> 'required|email|unique:users|max:191',
-            'password' => 'required|min:6|max:191|confirmed',
-            'name' => 'required|min:3',
-            'experience' => 'required_without:grade',
-            'grade' => 'required_without:experience'
+            'discipline' => 'required'
         ];
     }
 }

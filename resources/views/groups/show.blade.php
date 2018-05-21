@@ -9,7 +9,9 @@
 @endsection
 
 @section('content')
+
 	<div class="group-item">
+		
 		<h2 class="group-discipline">
 			<a href="/groups/{{ $group->id }}">
 			Discipline: {{ $group->discipline }}
