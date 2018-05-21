@@ -12,8 +12,8 @@
   <div class="header">
     <div class="blure"></div>
       <div class="container">
-        <h1 class="blog-title">Kate Basova Music School</h1>
-        <p class="lead blog-description">Welcome to the personal educational environment for the music school</p>
+        <h1 class="banner-title">Kate Basova Music School</h1>
+        <h4 class="banner-text">Welcome to the personal educational environment for the music school</h4>
     </div>
   </div>
   

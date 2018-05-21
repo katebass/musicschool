@@ -9,26 +9,49 @@
 @endsection
 
 @section('content')
+	<div class="container">
+			<div class="group-item">
+					@if(Auth::check())
+						@if(!$user->isTeacher())
 
-	<div class="group-item">
-		
-		<h2 class="group-discipline">
-			<a href="/groups/{{ $group->id }}">
-			Discipline: {{ $group->discipline }}
-			</a>
-		</h2>
-		
-		<h3>
-			{{ $group->description }}
-		</h3>
+							@if($group->containsStudent())
+								<button type="button" class="btn btn-primary button-join">
+									<a href="{{ route('leavegroup', $group->id) }}">
+										Leave group
+									</a>
+								</button>
+							@else
+								<button type="button" class="btn btn-primary button-join">
+									<a href="{{ route('joingroup', $group->id) }}">
+										Join group
+									</a>
+								</button>
+							@endif
 
-		<p class="group-meta">
-			<strong>Teacher: {{ $group->teacher->user->name }}</strong>
-		</p>
+						@endif
+					@endif
+					
+				<h2>
+					Discipline:
+					<a href="/groups/{{ $group->id }}">
+						<u>{{ $group->discipline }}</u>
+					</a>
+				</h2>
+				
+				<hr>
 
-		<p class="group-meta">
-			<strong>Students: {{ $group->students->count() }}</strong>
-		</p>
+				<h3>
+					{{ $group->description }}
+				</h3>
+
+				<p class="group-meta">
+					<strong>Teacher: {{ $group->teacher->user->name }}</strong>
+				</p>
+
+				<p class="group-meta">
+					<strong>Students in group: {{ $group->students->count() }}</strong>
+				</p>
+			</div>
 	</div>
 	
 @endsection

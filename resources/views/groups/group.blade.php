@@ -19,12 +19,15 @@
 			@endif
 		@endif
 		
-	<h2 class="group-discipline">
+	<h2>
+		Discipline:
 		<a href="/groups/{{ $group->id }}">
-		Discipline: {{ $group->discipline }}
+			<u>{{ $group->discipline }}</u>
 		</a>
 	</h2>
 	
+	<hr>
+
 	<h3>
 		{{ $group->description }}
 	</h3>
@@ -34,6 +37,6 @@
 	</p>
 
 	<p class="group-meta">
-		<strong>Students: {{ $group->students->count() }}</strong>
+		<strong>Students in group: {{ $group->students->count() }}</strong>
 	</p>
 </div>
