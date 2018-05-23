@@ -17,8 +17,8 @@ class CreateSolutionsTable extends Migration
             $table->increments('id');
             $table->integer('student_id')->unsigned()->index();
             $table->integer('assignment_id')->unsigned()->index();
-            $table->string('description');
-            $table->string('audiofile');
+            $table->string('description')->nullable();
+            $table->string('audiofile')->nullable();
             $table->integer('mark')->nullable($value = true);
             $table->dateTime('handover_date');
             $table->timestamps();

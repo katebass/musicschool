@@ -17,13 +17,13 @@
 		<div class="container">
 
 			@if($user->isTeacher())
-				<a href="{{ route('creategroup') }}">Create group</a>
+				<a href="{{ route('creategroup') }}">Create task</a>
 			@endif
 
-			@forelse($groups as $group)
-				@include('groups.group')
+			@forelse($tasks as $task)
+				@include('tasks.task')
 			@empty
-				no Groups
+				no tasks yet...
 			@endforelse
 		</div>
 

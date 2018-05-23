@@ -18,7 +18,7 @@ class CreateTasksTable extends Migration
             $table->integer('teacher_id')->unsigned()->index();
             $table->string('title');
             $table->string('description');
-            $table->string('audiofile');
+            $table->string('audiofile')->nullable();
             $table->timestamps();
 
             $table->foreign('teacher_id')

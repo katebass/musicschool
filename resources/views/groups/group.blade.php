@@ -1,5 +1,5 @@
 <div class="group-item">
-		@if(Auth::check())
+		@auth
 			@if(!$user->isTeacher())
 
 				@if($group->containsStudent())
@@ -17,7 +17,7 @@
 				@endif
 
 			@endif
-		@endif
+		@endauth
 		
 	<h2>
 		Discipline:

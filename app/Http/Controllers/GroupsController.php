@@ -29,13 +29,11 @@ class GroupsController extends Controller
 
 
         if($teacher){
-            $role = "teacher";
             $groups = Group::orderBy('created_at', 'desc')
             ->where('teacher_id', $teacher->id)
             ->get();
             
         } else{
-            $role = "student";
             $student = Student::where('user_id', Auth::user()->id)->first();
 
             $groups = $student->groups;
