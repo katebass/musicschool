@@ -15,7 +15,14 @@
 						</a>
 					</button>
 				@endif
-
+			@else
+				@if($group->belongsToTeacher())
+					<button type="button" class="btn btn-primary button-join">
+						<a href="{{ route('deletegroup', $group->id) }}">
+							Remove group
+						</a>
+					</button>
+				@endif
 			@endif
 		@endauth
 		

@@ -27,15 +27,20 @@ class Group extends Model
     }
 
     public function containsStudent(){
-        // $ans = $this->whereHas('students', function($stud){
-        //     $stud->where('studentsid', Auth::user()->student->id);
-        // })->first();
         $ans = $this->students->contains(Auth::user()->student->id);
-        //dd($ans);
+
         if($ans){
             return true;
         }
         return false;
     }
 
+    public function belongsToTeacher(){
+        $ans = $this->teacher->id;
+
+        if($ans == Auth::user()->teacher->id){
+            return true;
+        }
+        return false;
+    }
 }

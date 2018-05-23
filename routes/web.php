@@ -16,6 +16,7 @@ Route::get('/logout', 'AuthenticationController@destroy')->name('logout');
 Route::get('mygroups', 'GroupsController@myGroups')->name('mygroups');
 Route::view('groups/new', 'groups.new')->name('creategroup');
 Route::post('groups/create', 'GroupsController@create')->name("storegroup");
+Route::get('/groups/delete/{id}', 'GroupsController@delete')->name('deletegroup');
 
 Route::get('/groups/join/{id}', 'GroupsController@join')->name('joingroup');
 Route::get('/groups/leave/{id}', 'GroupsController@leave')->name('leavegroup');

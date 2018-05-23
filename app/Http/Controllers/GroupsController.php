@@ -72,6 +72,12 @@ class GroupsController extends Controller
         return redirect()->route('mygroups');
     }
 
+    public function delete($id){
+        $this->group->delete($id);
+
+        return redirect()->home();
+    }
+
     public function join($id){
         $group = $this->group->show($id);
 

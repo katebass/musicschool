@@ -29,8 +29,8 @@ class UserSeeder extends Seeder
             ->save(factory(App\Student::class)->create());
 
 
-        factory(App\Teacher::class, 5)->create();
+        //factory(App\Teacher::class, 2)->create();
 
-        factory(App\Student::class, 5)->create();
+        //factory(App\Student::class, 2)->create();
     }
 }

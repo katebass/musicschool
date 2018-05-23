@@ -11,6 +11,6 @@ class SolutionSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Solution::class, 10)->create();
+        factory(App\Solution::class, 5)->create();
     }
 }
