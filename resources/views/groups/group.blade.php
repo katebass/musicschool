@@ -17,7 +17,7 @@
 				@endif
 			@else
 				@if($group->belongsToTeacher())
-					<button type="button" class="btn btn-primary button-join">
+					<button type="button" class="btn btn-danger button-join">
 						<a href="{{ route('deletegroup', $group->id) }}">
 							Remove group
 						</a>
@@ -46,4 +46,16 @@
 	<p class="group-meta">
 		<strong>Students in group: {{ $group->students->count() }}</strong>
 	</p>
+
+	<p class="group-meta">
+		<strong>Tasks in group: {{ $group->assignments->count() }}</strong>
+	</p>
+
+	@if($user->isTeacher() && $group->belongsToTeacher())
+		<button type="button" class="btn btn-primary button-join">
+			<a href="{{ route('addtask', $group->id) }}">
+				Add task
+			</a>
+		</button>
+	@endif
 </div>

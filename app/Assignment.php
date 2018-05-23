@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Assignment extends Model
 {
+    protected $fillable = [
+        'group_id', 'task_id', 'deadline', 'assignment_date'
+    ];
+
     public function group()
     {
         return $this->belongsTo(Group::class);

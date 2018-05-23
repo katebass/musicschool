@@ -9,9 +9,18 @@ use App\Task;
 use App\Assignment;
 use App\Group;
 use Auth;
+use App\Repositories\TaskRepository;
+use App\Http\Requests\TaskRequest;
+
 
 class TasksController extends Controller
 {
+	protected $task;
+
+	public function __construct(Task $task){
+		$this->task = new TaskRepository($task);
+	}
+
 	public function myTasks(){
 		$teacher = Teacher::where('user_id', Auth::user()->id)->first();
 
@@ -23,9 +32,6 @@ class TasksController extends Controller
 			
 		} else{
 			$student = Student::where('user_id', Auth::user()->id)->first();
-
-			// $groups = $student->groups;
-			// $assignments = Assignment::whereIn('group_id', $groups->pluck('id'));
 
 			$tasks = Task::with('assignments.group.students')->
 				whereHas('assignments', function($assignQuery){
@@ -39,5 +45,12 @@ class TasksController extends Controller
 		}
 
 		return view('tasks.mytasks', compact('tasks'));
+	}
+
+	public function create(TaskRequest $request){
+
+		$this->task->create( $request->only(['title', 'description', 'audiofile']) );
+
+		return redirect()->route('mytasks');
 	}
 }

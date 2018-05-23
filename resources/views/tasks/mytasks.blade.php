@@ -17,7 +17,7 @@
 		<div class="container">
 
 			@if($user->isTeacher())
-				<a href="{{ route('creategroup') }}">Create task</a>
+				<a href="{{ route('createtask') }}">Create task</a>
 			@endif
 
 			@forelse($tasks as $task)

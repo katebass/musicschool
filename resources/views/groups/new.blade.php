@@ -15,6 +15,10 @@
 		<form action="{{ route('storegroup') }}" method="POST">
 			{{ csrf_field() }}
 
+			<div class="form-group">
+				@include('layout.errors')
+			</div>
+			
 			<div class="formgroup">
 				<label for="">Discipline: </label>
 				<input type="text" name="discipline">

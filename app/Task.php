@@ -6,14 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    public function teacher()
-    {
-        return $this->belongsTo(Teacher::class);
-    }
+	protected $fillable = [
+		'title', 'description', 'audiofile'
+	];
+	
+	public function teacher()
+	{
+		return $this->belongsTo(Teacher::class);
+	}
 
-    public function assignments()
-    {
-        return $this->hasMany(Assignment::class);
-    }
+	public function assignments()
+	{
+		return $this->hasMany(Assignment::class);
+	}
 
 }
