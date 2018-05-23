@@ -1,7 +1,6 @@
 <div class="group-item">
 		@auth
 			@if(!$user->isTeacher())
-
 				@if($group->containsStudent())
 					<button type="button" class="btn btn-primary button-join">
 						<a href="{{ route('leavegroup', $group->id) }}">
@@ -50,12 +49,14 @@
 	<p class="group-meta">
 		<strong>Tasks in group: {{ $group->assignments->count() }}</strong>
 	</p>
-
-	@if($user->isTeacher() && $group->belongsToTeacher())
-		<button type="button" class="btn btn-primary button-join">
-			<a href="{{ route('addtask', $group->id) }}">
-				Add task
-			</a>
-		</button>
-	@endif
+	
+	@auth
+		@if($user->isTeacher() && $group->belongsToTeacher())
+			<button type="button" class="btn btn-primary button-join">
+				<a href="{{ route('addtask', $group->id) }}">
+					Add task
+				</a>
+			</button>
+		@endif
+	@endauth
 </div>
