@@ -6,7 +6,7 @@
       @auth
         <a class="nav-link" href="{{ route('mygroups') }}">My Groups</a>
         <a class="nav-link" href="{{ route('mytasks') }}">Tasks</a>
-        <a class="nav-link" href="#">Solutions</a>
+        <a class="nav-link" href="{{ route('mysolutions') }}">Solutions</a>
       @endauth
 
       @auth

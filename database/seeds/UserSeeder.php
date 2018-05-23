@@ -30,7 +30,6 @@ class UserSeeder extends Seeder
 
 
         //factory(App\Teacher::class, 2)->create();
-
         //factory(App\Student::class, 2)->create();
     }
 }

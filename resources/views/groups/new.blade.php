@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-  NewTask
+  NewGroup
 @endsection
 
 @section('styles')

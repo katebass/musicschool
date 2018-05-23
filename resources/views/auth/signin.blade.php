@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-	Sign Up
+	Sign In
 @endsection
 
 @section('content')

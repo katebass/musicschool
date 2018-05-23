@@ -14,7 +14,7 @@ class GroupSeeder extends Seeder
 
         factory(App\Group::class, 2)->create()
         	->each(function($group){
-        		$students = factory(App\Student::class, 4)->create();
+        		$students = factory(App\Student::class, 3)->create();
         		$group->students()->attach($students);
         	});
     }
