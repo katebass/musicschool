@@ -53,4 +53,10 @@ class TasksController extends Controller
 
 		return redirect()->route('mytasks');
 	}
+
+	public function show($id){
+		$task = $this->task->show($id);
+
+		return view('tasks.show', compact('task'));
+	}
 }

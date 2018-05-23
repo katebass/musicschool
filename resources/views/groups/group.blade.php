@@ -27,7 +27,7 @@
 		
 	<h2>
 		Discipline:
-		<a href="/groups/{{ $group->id }}">
+		<a href="{{ route('group', $group->id) }}">
 			<u>{{ $group->discipline }}</u>
 		</a>
 	</h2>

@@ -26,8 +26,7 @@ class AssignmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'deadline' => 'required',
-            'task_id' => 'required'
+            'deadline' => 'required'
         ];
     }
 }

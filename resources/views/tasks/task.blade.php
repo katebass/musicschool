@@ -2,7 +2,7 @@
 
 	<h2>
 		Title:
-		<a href="/tasks/{{ $task->id }}">
+		<a href="{{ route('task', $task->id) }}">
 			<u>{{ $task->title }}</u>
 		</a>
 	</h2>

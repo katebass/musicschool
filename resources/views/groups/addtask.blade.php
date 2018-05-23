@@ -24,7 +24,7 @@
 
 			<div class="form-group">
 				<label for="">Task: </label>
-				<select name="taskid" required">
+				<select name="taskid">
 
 					@forelse($tasks as $task)
 						<option value="{{ $task->id }}">{{ $task->title }}</option>

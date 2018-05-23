@@ -107,6 +107,14 @@ class GroupsController extends Controller
 
 	public function addTaskPost(AssignmentRequest $request, $id){
 		$group = $this->group->show($id);
+		
+		if ($request->taskid == ""){
+			return back()->withErrors([
+
+				'message' => "You can't add any task to this group. Please, create one or more new tasks"
+
+			]);
+		}
 
 		$assignment = Assignment::create([
 			'group_id' => $group->id,

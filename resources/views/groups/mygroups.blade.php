@@ -10,7 +10,7 @@
 
 @section('content')
 
-	<h3 class="section-title">MY TASKS</h3>
+	<h3 class="section-title">MY GROUPS</h3>
 
 	<div class="group-list">
 

@@ -32,10 +32,7 @@
 					@endauth
 					
 				<h2>
-					Discipline:
-					<a href="/groups/{{ $group->id }}">
-						<u>{{ $group->discipline }}</u>
-					</a>
+					Discipline: {{ $group->discipline }}
 				</h2>
 				
 				<hr>

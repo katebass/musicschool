@@ -34,3 +34,5 @@ Route::get('/groups', 'GroupsController@search')->name('search');
 Route::get('mytasks', 'TasksController@myTasks')->name('mytasks');
 Route::view('tasks/new', 'tasks.new')->name('createtask');
 Route::post('tasks/create', 'TasksController@create')->name("storetask");
+
+Route::get('/tasks/{id}', 'TasksController@show')->name('task');
