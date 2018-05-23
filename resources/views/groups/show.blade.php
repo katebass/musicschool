@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-  Home
+  Task
 @endsection
 
 @section('styles')
