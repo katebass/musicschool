@@ -4,6 +4,12 @@
 		<button>
 			<a href="{{ route('createsolution', $task->id) }}">Create solution</a>
 		</button>
+	@else
+		<button type="button" class="btn btn-danger button-join">
+			<a href="{{ route('deletetask', $task->id) }}">
+				Remove task
+			</a>
+		</button>
 	@endif
 
 	<h2>
@@ -14,6 +20,10 @@
 	</h2>
 	
 	<hr>
+
+	<h3 class="audiofile">
+		Audio: {{ $task->audiofile }}
+	</h3>
 
 	<h3>
 		Description: {{ $task->description }}

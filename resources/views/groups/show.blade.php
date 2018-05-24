@@ -48,6 +48,10 @@
 				<p class="group-meta">
 					<strong>Students in group: {{ $group->students->count() }}</strong>
 				</p>
+
+				<p class="group-meta">
+					<strong>Tasks in group: {{ $group->assignments->count() }}</strong>
+				</p>
 			</div>
 	</div>
 	

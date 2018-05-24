@@ -28,7 +28,7 @@ class SolutionRepository extends Repository{
 		$solution->description = $array['description'];
 		$solution->handover_date = Carbon::now();
 
-		$file = Hash::make(Auth::user()->id).Carbon::now();
+		$file = Hash::make(Auth::user()->id.Carbon::now());
 		$solution->audiofile = $file;
 
 		$solution->assignment()->associate($assignment);

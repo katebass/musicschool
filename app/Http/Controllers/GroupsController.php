@@ -123,6 +123,6 @@ class GroupsController extends Controller
 			'deadline' => $request->deadline
 		]);
 
-		return redirect()->home();
+		return redirect()->route('mygroups');
 	}
 }

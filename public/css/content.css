@@ -49,3 +49,7 @@
 .button-join a:hover{
 	color: white;
 }
+
+.audiofile{
+	overflow: hidden;
+}

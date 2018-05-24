@@ -59,4 +59,10 @@ class TasksController extends Controller
 
 		return view('tasks.show', compact('task'));
 	}
+
+	public function delete($id){
+		$this->task->delete($id);
+
+		return redirect()->route('mytasks');
+	}
 }

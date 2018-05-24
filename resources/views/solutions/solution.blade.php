@@ -27,11 +27,15 @@
 	
 	@if($user->isTeacher())
 
-		<form action="">
+		<form action="{{ route('updatemark', $solution->id) }}" method="POST">
+			{{ csrf_field() }}
+			
 			<div class="form-group">
 				<label>Mark: </label>
 				<input type="text" name="mark" value="{{ $solution->mark }}">
+				<button type="submit">Put a mark</button>
 			</div>
+
 		</form>
 
 	@else

@@ -64,4 +64,10 @@ class SolutionsController extends Controller
 
 		return redirect()->route('mysolutions');
 	}
+
+	public function updatemark($id, Request $request){
+		$this->solution->update($request->only(['mark']), $id);
+		
+		return redirect()->route('mysolutions');
+	}
 }

@@ -23,7 +23,7 @@ class Repository implements RepositoryInterface {
 	}
 
 	public function update(array $data, $id) {
-		$record = $this->find($id);
+		$record = $this->model->find($id);
 
 		return $record->update($data);
 	}
