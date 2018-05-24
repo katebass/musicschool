@@ -27,7 +27,7 @@ class SolutionRequest extends FormRequest
     {
         return [
             'audiofile' => 'required',
-            'mark' => 'integer|between:1,5|required'
+            'mark' => 'integer|between:1,5'
         ];
     }
 }
