@@ -1,5 +1,11 @@
 <div class="group-item">
 
+	@if(!$user->isTeacher())
+		<button>
+			<a href="{{ route('createsolution', $task->id) }}">Create solution</a>
+		</button>
+	@endif
+
 	<h2>
 		Title:
 		<a href="{{ route('task', $task->id) }}">

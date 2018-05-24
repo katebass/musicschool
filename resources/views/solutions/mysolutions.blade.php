@@ -16,10 +16,6 @@
 
 		<div class="container">
 
-			@if(!$user->isTeacher())
-				<a href="{{ route('createsolution') }}">Create solution</a>
-			@endif
-
 			@forelse($solutions as $solution)
 				@include('solutions.solution')
 			@empty

@@ -1,7 +1,9 @@
 <div class="group-item">
 
 	<h2>
-		Task: {{ $solution->id }}
+		Task: <a href="{{ route('task', $solution->assignment->task->id) }}">
+			<u>{{ $solution->assignment->task->title }} </u>
+		</a>
 	</h2>
 	
 	<hr>

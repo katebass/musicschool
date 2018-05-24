@@ -40,5 +40,5 @@ Route::get('/tasks/{id}', 'TasksController@show')->name('task');
 //All about solutions
 Route::get('mysolutions', 'SolutionsController@mySolutions')->name('mysolutions');
 
-Route::view('solutions/new', 'solutions.new')->name('createsolution');
-Route::post('solutions/create', 'SolutionsController@create')->name("storesolution");
+Route::get('tasks/{id}/newsolution', 'SolutionsController@newSolution')->name('createsolution');
+Route::post('tasks/{id}/createsolution', 'SolutionsController@create')->name("storesolution");

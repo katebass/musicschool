@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Auth;
 
-class AssignmentRequest extends FormRequest
+class SolutionRequest extends FormRequest
 {
 
     /**

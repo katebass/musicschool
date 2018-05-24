@@ -14,6 +14,7 @@ class TaskRepository extends Repository{
 
 		$task->title = $array['title'];
 		$task->description = $array['description'];
+		
 		$file = Hash::make(Auth::user()->id).Carbon::now();
 		$task->audiofile = $file;
 

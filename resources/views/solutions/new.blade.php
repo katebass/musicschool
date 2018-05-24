@@ -12,7 +12,7 @@
 
 	<div class="container">
 
-		<form action="{{ route('storesolution') }}" method="POST">
+		<form action="{{ route('storesolution', $taskid) }}" method="POST">
 			{{ csrf_field() }}
 
 			<div class="form-group">
@@ -20,18 +20,13 @@
 			</div>
 			
 			<div class="formgroup">
-				<label for="">Task: </label>
-				<input type="text" name="title">
+				<label for="">Audiofile:</label>
+				<input type="file" name="audiofile">
 			</div>
 
 			<div class="formgroup">
 				<label for="">Description:</label>
 				<input type="text" name="description">
-			</div>
-
-			<div class="formgroup">
-				<label for="">Audiofile:</label>
-				<input type="file" name="audiofile">
 			</div>
 
 			<div class="formgroup">
