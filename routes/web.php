@@ -1,32 +1,6 @@
 <?php
 use Illuminate\Http\Request;
 
-Route::view('/welcome', '.welcome');
-Route::post('/send', function(Request $request) {
-    $request->myfile->storeAs('', 'name', 'google');
-    return 'File was saved to Google Drive';
-})->name('sendfile');
-
-
-Route::post('/getfile', function(Request $request){
-    $filename = 'oT19EB8HkyVJ4QcPr6yg3FO3Pw5bCWTqyJo21PlY.mpga';
-    $dir = '/';
-    $recursive = false;
-    $contents = collect(Storage::cloud()->listContents($dir, $recursive));
-    $file = $contents
-        ->where('type', '=', 'file')
-        ->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
-        ->where('extension', '=', pathinfo($filename, PATHINFO_EXTENSION))
-        ->first();
-
-    $rawData = Storage::cloud()->get($file['path']);
-    return response($rawData, 200)
-        ->header('ContentType', $file['mimetype'])
-        ->header('Content-Disposition', "attachment; filename='$filename'");
-
-})->name('getfile');
-
-
 //main route
 Route::get('/','GroupsController@index')->name('home');
 
@@ -40,38 +14,38 @@ Route::get('/logout', 'AuthenticationController@destroy')->name('logout');
 
 
 //All about groups
-Route::get('mygroups', 'GroupsController@myGroups')->name('mygroups');
+Route::get('mygroups', 'GroupsController@myGroups')->name('mygroups')->middleware('authcheck');
 
-Route::view('groups/new', 'groups.new')->name('creategroup');
-Route::post('groups/create', 'GroupsController@create')->name("storegroup");
-Route::get('/groups/delete/{id}', 'GroupsController@delete')->name('deletegroup');
+Route::view('groups/new', 'groups.new')->name('creategroup')->middleware('authcheck');
+Route::post('groups/create', 'GroupsController@create')->name("storegroup")->middleware('authcheck');
+Route::get('/groups/delete/{id}', 'GroupsController@delete')->name('deletegroup')->middleware('authcheck');
 
-Route::get('group/{id}/addtask', 'GroupsController@addTask')->name('addtask');
-Route::post('group/{id}/addtaskpost', 'GroupsController@addTaskPost')->name('addtaskpost');
+Route::get('group/{id}/addtask', 'GroupsController@addTask')->name('addtask')->middleware('authcheck');
+Route::post('group/{id}/addtaskpost', 'GroupsController@addTaskPost')->name('addtaskpost')->middleware('authcheck');
 
 
-Route::get('/groups/join/{id}', 'GroupsController@join')->name('joingroup');
-Route::get('/groups/leave/{id}', 'GroupsController@leave')->name('leavegroup');
+Route::get('/groups/join/{id}', 'GroupsController@join')->name('joingroup')->middleware('authcheck')->middleware('onlystudent');
+Route::get('/groups/leave/{id}', 'GroupsController@leave')->name('leavegroup')->middleware('authcheck')->middleware('onlystudent');
 
 Route::get('/groups/{id}', 'GroupsController@show')->name('group');
 Route::get('/groups', 'GroupsController@search')->name('search');
 
 
 //All about tasks
-Route::get('mytasks', 'TasksController@myTasks')->name('mytasks');
-Route::view('tasks/new', 'tasks.new')->name('createtask');
-Route::post('tasks/create', 'TasksController@create')->name("storetask");
+Route::get('mytasks', 'TasksController@myTasks')->name('mytasks')->middleware('authcheck');
+Route::view('tasks/new', 'tasks.new')->name('createtask')->middleware('authcheck')->middleware('onlyteacher');
+Route::post('tasks/create', 'TasksController@create')->name("storetask")->middleware('authcheck')->middleware('onlyteacher');
 
-Route::get('/tasks/delete/{id}', 'TasksController@delete')->name('deletetask');
+Route::get('/tasks/delete/{id}', 'TasksController@delete')->name('deletetask')->middleware('authcheck')->middleware('onlyteacher');
 
-Route::get('/tasks/{id}', 'TasksController@show')->name('task');
-Route::post('/tasks/{id}/getaudio', 'TasksController@getAudio')->name('getTaskFile');
+Route::get('/tasks/{id}', 'TasksController@show')->name('task')->middleware('authcheck');
+Route::post('/tasks/{id}/getaudio', 'TasksController@getAudio')->name('getTaskFile')->middleware('authcheck');
 
 //All about solutions
-Route::get('mysolutions', 'SolutionsController@mySolutions')->name('mysolutions');
+Route::get('mysolutions', 'SolutionsController@mySolutions')->name('mysolutions')->middleware('authcheck');
 
-Route::get('tasks/{id}/newsolution', 'SolutionsController@newSolution')->name('createsolution');
-Route::post('tasks/{id}/createsolution', 'SolutionsController@create')->name("storesolution");
+Route::get('tasks/{id}/newsolution', 'SolutionsController@newSolution')->name('createsolution')->middleware('authcheck')->middleware('onlystudent');
+Route::post('tasks/{id}/createsolution', 'SolutionsController@create')->name("storesolution")->middleware('authcheck')->middleware('onlystudent');
 
-Route::post('solutions/{id}/updatemark', 'SolutionsController@updatemark')->name('updatemark');
-Route::post('/solutions/{id}/getaudio', 'SolutionsController@getAudio')->name('getSolutionFile');
+Route::post('solutions/{id}/updatemark', 'SolutionsController@updatemark')->name('updatemark')->middleware('authcheck')->middleware('onlyteacher');
+Route::post('/solutions/{id}/getaudio', 'SolutionsController@getAudio')->name('getSolutionFile')->middleware('authcheck');
