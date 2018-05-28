@@ -1,4 +1,13 @@
 <?php
+use Illuminate\Http\Request;
+
+Route::view('/welcome', '.welcome');
+Route::post('/send', function(Request $request) {
+    
+    dd($request->file('myfile'));
+
+    return 'File was saved to Google Drive';
+})->name('sendfile');
 
 //main route
 Route::get('/','GroupsController@index')->name('home');
