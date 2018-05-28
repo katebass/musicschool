@@ -18,12 +18,17 @@
 		</div>
 	</div>
 
-	<form action="{{ route('sendfile') }}" method="POST" enctype="multipart/form-data" files="true">
+	<form action="{{ route('sendfile') }}" method="POST" enctype="multipart/form-data">
 		{{ csrf_field() }}
 
 		<input type="file" name="myfile">
 
 		<input type="submit">
+	</form>
+
+	<form action="{{ route('getfile') }}" method="POST">
+		{{ csrf_field() }}
+		<input type="submit" value="download audio">
 	</form>
 	
 	

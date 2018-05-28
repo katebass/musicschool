@@ -5,9 +5,7 @@
 			<u>{{ $solution->assignment->task->title }} </u>
 		</a>
 	</h2>
-	
 	<hr>
-
 	<h3>
 		Author: {{ $solution->student->user->name }}
 	</h3>
@@ -16,10 +14,13 @@
 		Description: {{ $solution->description }}
 	</h5>
 
-	<h5>
-		Audio: {{ $solution->audiofile }}
-	</h5>
+	<h5> Audio:	</h5>
 
+	<form action="{{ route('getSolutionFile', $solution->id) }}" method="POST">
+		{{ csrf_field() }}
+		<input type="submit" value="download audio">
+	</form>
+	<br>
 	<h5>
 		Sending date: {{ $solution->handover_date }}
 	</h5>

@@ -3,11 +3,29 @@ use Illuminate\Http\Request;
 
 Route::view('/welcome', '.welcome');
 Route::post('/send', function(Request $request) {
-    
-    dd($request->file('myfile'));
-
+    $request->myfile->storeAs('', 'name', 'google');
     return 'File was saved to Google Drive';
 })->name('sendfile');
+
+
+Route::post('/getfile', function(Request $request){
+    $filename = 'oT19EB8HkyVJ4QcPr6yg3FO3Pw5bCWTqyJo21PlY.mpga';
+    $dir = '/';
+    $recursive = false;
+    $contents = collect(Storage::cloud()->listContents($dir, $recursive));
+    $file = $contents
+        ->where('type', '=', 'file')
+        ->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
+        ->where('extension', '=', pathinfo($filename, PATHINFO_EXTENSION))
+        ->first();
+
+    $rawData = Storage::cloud()->get($file['path']);
+    return response($rawData, 200)
+        ->header('ContentType', $file['mimetype'])
+        ->header('Content-Disposition', "attachment; filename='$filename'");
+
+})->name('getfile');
+
 
 //main route
 Route::get('/','GroupsController@index')->name('home');
@@ -47,6 +65,7 @@ Route::post('tasks/create', 'TasksController@create')->name("storetask");
 Route::get('/tasks/delete/{id}', 'TasksController@delete')->name('deletetask');
 
 Route::get('/tasks/{id}', 'TasksController@show')->name('task');
+Route::post('/tasks/{id}/getaudio', 'TasksController@getAudio')->name('getTaskFile');
 
 //All about solutions
 Route::get('mysolutions', 'SolutionsController@mySolutions')->name('mysolutions');
@@ -55,3 +74,4 @@ Route::get('tasks/{id}/newsolution', 'SolutionsController@newSolution')->name('c
 Route::post('tasks/{id}/createsolution', 'SolutionsController@create')->name("storesolution");
 
 Route::post('solutions/{id}/updatemark', 'SolutionsController@updatemark')->name('updatemark');
+Route::post('/solutions/{id}/getaudio', 'SolutionsController@getAudio')->name('getSolutionFile');

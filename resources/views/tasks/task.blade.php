@@ -22,9 +22,13 @@
 	<hr>
 
 	<h3 class="audiofile">
-		Audio: {{ $task->audiofile }}
+		Audio:
 	</h3>
-
+	<form action="{{ route('getTaskFile', $task->id) }}" method="POST">
+		{{ csrf_field() }}
+		<input type="submit" value="download audio">
+	</form>
+	<br>
 	<h3>
 		Description: {{ $task->description }}
 	</h3>

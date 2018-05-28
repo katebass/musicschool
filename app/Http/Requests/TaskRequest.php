@@ -27,7 +27,8 @@ class TaskRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'audiofile' => 'required|mimetypes:audio/aac,audio/mpga,audio/midi,audio/ogg,audio/wav,audio/webm,audio/3gpp,audio/3gpp2,audio/mp3,audio/mpeg,audio/mpeg4-generic,audio/mp4,mp3'
         ];
     }
 }

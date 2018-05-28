@@ -12,7 +12,7 @@
 
 	<div class="container">
 
-		<form action="{{ route('storesolution', $taskid) }}" method="POST">
+		<form action="{{ route('storesolution', $taskid) }}" method="POST" enctype="multipart/form-data">
 			{{ csrf_field() }}
 
 			<div class="form-group">

@@ -17,7 +17,9 @@
 		<div class="container">
 
 			@if($user->isTeacher())
-				<a href="{{ route('creategroup') }}">Create group</a>
+				<button class="btn btn-default">
+					<a href="{{ route('creategroup') }}">Create group</a>
+				</button>
 			@endif
 
 			@forelse($groups as $group)

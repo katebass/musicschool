@@ -27,7 +27,8 @@ class SolutionRequest extends FormRequest
     {
         return [
             'audiofile' => 'required',
-            'mark' => 'integer|between:1,5'
+            'mark' => 'integer|between:1,5',
+            'audiofile' => 'required|mimetypes:audio/aac,audio/mpga,audio/midi,audio/ogg,audio/wav,audio/webm,audio/3gpp,audio/3gpp2,audio/mp3,audio/mpeg,audio/mpeg4-generic,audio/mp4,mp3'
         ];
     }
 }

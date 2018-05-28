@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Repositories\SolutionRepository;
 use App\Http\Requests\SolutionRequest;
 use Carbon\Carbon;
+use Storage;
 
 class SolutionsController extends Controller
 {	
@@ -59,8 +60,11 @@ class SolutionsController extends Controller
 	public function create(SolutionRequest $request){
 		$ary = $request->only(['description', 'audiofile']);
 		$ary['id']  = $request->id;
-		
-		$this->solution->create( $ary );
+		$solution = $this->solution->create( $ary );
+
+		$this->solution->setModel($solution);
+		$filename = $this->solution->getModel()->audiofile;
+		$request->audiofile->storeAs('', $filename, 'google');
 
 		return redirect()->route('mysolutions');
 	}
@@ -69,5 +73,26 @@ class SolutionsController extends Controller
 		$this->solution->update($request->only(['mark']), $id);
 		
 		return redirect()->route('mysolutions');
+	}
+
+	public function getAudio(Request $request){
+
+		$solution = Solution::find($request->id);
+		$this->solution->setModel($solution);
+		$filename = $this->solution->getModel()->audiofile;
+
+		$dir = '/';
+		$recursive = false; // Get subdirectories also?
+		$contents = collect(Storage::cloud()->listContents($dir, $recursive));
+		$file = $contents
+			->where('type', '=', 'file')
+			->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
+			->where('extension', '=', pathinfo($filename, PATHINFO_EXTENSION))
+			->first(); // there can be duplicate file names!
+		
+		$rawData = Storage::cloud()->get($file['path']);
+		return response($rawData, 200)
+			->header('ContentType', $file['mimetype'])
+			->header('Content-Disposition', "attachment; filename='$filename'");
 	}
 }
